@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  event-store-queue:
+    container_name: ${CONTAINER_NAME}
+    image: ${BROKER_HOST}:${BROKER_VERSION}
+    ports:
+      - ${BROKER_PORT_SERVICE}:${BROKER_PORT_SERVICE}
+      - ${BROKER_PORT_MANAGEMENT}:${BROKER_PORT_MANAGEMENT}
+    env_file:
+      - .env
+    environment:
+      - RABBITMQ_DEFAULT_USER=${BROKER_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${BROKER_DEFAULT_PASS}
+    networks:
+      - zuidui
+
+networks:
+  zuidui:
+    driver: bridge
