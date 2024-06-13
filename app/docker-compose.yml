@@ -12,6 +12,7 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${BROKER_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${BROKER_DEFAULT_PASS}
+    command: rabbitmq-server --heartbeat=0 # Only for debugging. Remove this line in production      
     networks:
       - zuidui
 
