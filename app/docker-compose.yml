@@ -27,7 +27,8 @@ services:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     networks:
-      - zuidui
+      - zuidui  
+     
       
 networks:
   zuidui:
