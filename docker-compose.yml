@@ -28,8 +28,8 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     networks:
       - zuidui  
-     
       
 networks:
   zuidui:
+    name: zuidui
     driver: bridge

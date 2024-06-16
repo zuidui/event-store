@@ -1,8 +1,6 @@
 .DEFAULT_GOAL := help
 
-include app/.env
-
-SRC_PATH=./app
+include .env
 
 .PHONY: help
 help:  ## Show this help.
@@ -16,9 +14,9 @@ todo:  ## Show the TODOs in the code.
 .PHONY: run
 run:  ## Start the app in development mode.
 	@echo "Starting $(IMAGE_NAME) in development mode."
-	docker-compose -f $(SRC_PATH)/docker-compose.yml up
+	docker-compose -f docker-compose.yml up
 
 .PHONY: clean
 clean:  ## Clean the app.
 	@echo "Cleaning $(IMAGE_NAME) docker image."
-	docker-compose -f $(SRC_PATH)/docker-compose.yml down --rmi all --volumes --remove-orphans
+	docker-compose -f docker-compose.yml down --rmi all --volumes --remove-orphans
