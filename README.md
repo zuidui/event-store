@@ -1,59 +1,67 @@
-# Event Store
+# Zuidui resources
 
-## Description
+## Overview
 
-Proof of concept for the Master's Thesis. Main objectives are:
+This repository sets up a a development environment for all resources neede to debug Zuidui components using Docker Compose such as RabbitMQ and PgAdmin. The services are interconnected within a Docker network named `zuidui`.
 
-- Create a simple web application with FastAPI
-- Follow best practices to structure the application
-- Demo to authenticate users, store data in a database and retrieve it
-- Apply TDD to the development of the application. Unit tests and integration tests
-- Use Redis to store the session data and cache
-- Use Docker to deploy the application
-- SQLModel to interact with the database
-- Use GitHub Actions to automate the CI/CD pipeline
+## Prerequisites
 
-## Requirements
+Ensure you have the following installed on your system:
 
-- You only need to have [Docker](https://www.docker.com/) installed.
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Folder structure
+## Project Structure
 
-- There is a `tests` folder with the tests files.
-  - In order to add new tests please follow the [pytest](https://docs.pytest.org/en/7.1.x/getting-started.html) recommendations.
-- The production code goes inside the `app` folder.
-- Inside the `scripts` folder you can find the git hooks files.
+- `docker-compose.yml`: Defines the services, their configurations, and networking.
+- `.env`: Contains environment variables used by Docker Compose and the services.
+- `Makefile`: Provides a set of commands to automate common tasks.
 
-## Project commands
+## Getting Started
 
-The project uses [Makefiles](https://www.gnu.org/software/make/manual/html_node/Introduction.html) to run the most common tasks:
+### Configuration
 
-- `help` : Shows this help.
-- `local-setup`: Sets up the local environment (e.g. install git hooks).
-- `build`: Builds the app.
-- `clean`: Cleans the app.
-- `run`: Runs the app.
-- `install package=XXX`: Installs the package XXX in the app, ex: `make install package=requests`.
-- `reformat`: Formats the code.
-- `check-typing`: Runs a static analyzer over the code in order to find issues.
-- `check-style`: Checks the code style.
-- `test`: Run all the tests.
+1. **.env File**: Update the `.env` file with appropriate values.
 
-## Packages
+2. **docker-compose.yml**: Ensure it references the `.env` file for environment variables.
 
-This project uses [Poetry](https://python-poetry.org) as the package manager.
+### Commands
 
-To run poetry need the `pyproject.toml` created first and then run `make poetry-init` to install the dependencies.
+Use the `Makefile` for common tasks:
 
-### Testing
+- **Build and start the services**:
 
-- [pytest](https://docs.pytest.org/en/7.1.x/contents.html): Testing runner.
-- [pytest-xdist](https://github.com/pytest-dev/pytest-xdist): Pytest plugin to run the tests in parallel.
-- [doublex](https://github.com/davidvilla/python-doublex): Powerful test doubles framework for Python.
-- [expects](https://expects.readthedocs.io/en/stable/): An expressive and extensible TDD/BDD assertion library for Python..
-- [doublex-expects](https://github.com/jaimegildesagredo/doublex-expects): A matchers library for the Expects assertion librar.
+    ```sh
+    make run
+    ```
 
-### Code style
+- **Stop the services**:
 
-- [mypy](https://mypy.readthedocs.io/en/stable/): A static type checker.
-- [ruff](https://github.com/astral-sh/ruff): An extremely fast Python linter, written in Rust.
+    ```sh
+    make clean
+    ```
+
+### Services
+
+- **RabbitMQ Management Console**: Accessible at `http://localhost:${BROKER_PORT_MANAGEMENT}`
+- **PgAdmin**: Accessible at `http://localhost:${PGADMIN_PORT}`
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the Apache 2.0 License. See the LICENSE file for details.
+
+## Contact
+
+For any inquiries or issues, please open an issue on the [GitHub repository](https://github.com/zuidui/resources) or contact any of the maintainers.
+
+---
